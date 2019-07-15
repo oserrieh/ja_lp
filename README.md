@@ -1,11 +1,12 @@
 # ja-plp
 Junior Automation - Python Learning Program
 
-# pytest exercises
-## from https://www.tutorialspoint.com/pytest/pytest_tutorial.pdf
+##### Preface
 
-##### **Exercise 1**
-##### **Exercise 2**
-##### **Exercise 3**
-##### **Exercise 4**
-##### **Exercise 5**
+##### Table of Contents
+* [Pytest Learning Program](pytest_exercises/)
+
+* [Python Learning Program](python_exercises/)
+
+* [Selenium Learning Program](selenim_exercises/)
+
