@@ -10,7 +10,6 @@ Junior Automation - Python Learning Program
 
 * [Selenium Learning Program](exercises/selenim_exercises/)
 
-##### Setup 
 SETUP for running tests with pytest
 ======
 
