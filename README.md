@@ -3,6 +3,8 @@ Junior Automation - Learning Program (Pytest, Python, Selenium)
 
 ##### Preface
 
+The purpose of this Learning Program is to help new Junior QA/Dev in learning Python, Pytest and Selenium.
+
 ##### Table of Contents
 * [Pytest Learning Program](exercises/pytest_exercises/)
 
