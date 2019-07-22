@@ -26,7 +26,7 @@ source venv-auto/bin/activate
 Install requirements
 ------
 ```bash
-cd ja_plp
+cd ja_lp
 pip install -r requirements.txt
 ```
 
