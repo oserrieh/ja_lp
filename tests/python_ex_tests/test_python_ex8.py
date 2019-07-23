@@ -1,3 +1,6 @@
+from exercises.python_exercises.python_ex8 import distinct
+
+
 def test_distinct():
     assert distinct([1]) == [1]
     assert distinct([1, 2]) == [1, 2]

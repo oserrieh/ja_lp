@@ -1,2 +1,4 @@
 def monkey_count(n):
-    #your code here
+   x = [i for i in range(10)]
+   return x
+# return [y for x in range for y in x]

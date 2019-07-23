@@ -1,6 +1,8 @@
+from exercises.python_exercises.python_ex4 import positive_sum
+
 def test_positive_sum_examples():
 	print ("works for some examples")
-	assert positive_sums([1,2,3,4,5]) == 15
+	assert positive_sum([1,2,3,4,5]) == 15
 	assert positive_sum([1,-2,3,4,5]) == 13
 	assert positive_sum([-1,2,3,4,-5]) == 9
 

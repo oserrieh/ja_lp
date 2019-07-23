@@ -1,2 +1,5 @@
 def string_to_number(s):
-    # ... your code here
+   return float(s)
+
+def string_to_number2(s):
+    return int(float(s))
