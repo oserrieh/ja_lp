@@ -1,6 +1,13 @@
-test.assert_equals(century(1705), 18, 'Testing for year 1705')
-test.assert_equals(century(1900), 19, 'Testing for year 1900')
-test.assert_equals(century(1601), 17, 'Testing for year 1601')
-test.assert_equals(century(2000), 20, 'Testing for year 2000')
-test.assert_equals(century(356), 4, 'Testing for year 356')
-test.assert_equals(century(89), 1, 'Testing for year 89')
+def test_century():
+    print('Testing for year 1705')
+    assert century(1705) == 18
+    print('Testing for year 1900')
+    assert century(1900) == 19
+    print('Testing for year 1601')
+    assert century(1601) == 17
+    print('Testing for year 2000')
+    assert century(2000) == 20
+    print('Testing for year 356')
+    assert century(356) == 4
+    print('Testing for year 89')
+    assert century(89) == 1
