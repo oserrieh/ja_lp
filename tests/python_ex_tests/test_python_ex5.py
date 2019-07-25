@@ -8,8 +8,3 @@ def test_summation():
     assert summation(8) == 36
 
 
-def test_summation2():
-    print('Summation')
-    print('Should return the correct total')
-    assert summation(1) == 1
-    assert summation(8) == 36
