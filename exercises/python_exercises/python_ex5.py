@@ -3,6 +3,7 @@ def summation(num):
 
     pass  # Code here
 
+
 def summation2(num):
     a = range(10)
     b = sum(a)
