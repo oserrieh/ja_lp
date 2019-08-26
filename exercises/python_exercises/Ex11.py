@@ -14,4 +14,3 @@ print(solution().valid_parenthese("()[]{}"))
 print(solution().valid_parenthese("(]"))
 print(solution().valid_parenthese("([)]"))
 print(solution().valid_parenthese("{[]}"))
-
