@@ -1,3 +1,3 @@
 def positive_sum(arr):
-    # Your code here
-    return 0
+    return sum(x for x in arr if x > 0)
+

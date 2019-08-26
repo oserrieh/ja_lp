@@ -1,2 +1,2 @@
 def reverseWords(str):
-    return str
+    return ' '.join(reversed(str.split(' ')))

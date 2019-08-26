@@ -1,2 +1,6 @@
 def summation(num):
-    pass # Code here
+    return sum(range(1, num + 1))
+
+    pass  # Code here
+
+

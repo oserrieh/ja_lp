@@ -1,3 +1,2 @@
 def century(year):
-    # Finish this :)
-    return
+    return (year + 99) // 100
