@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 
 class SearchText(unittest.TestCase):
     def setUp(self):
-
         self.driver = webdriver.Chrome()                               # create a new Chrome session
         self.driver.maximize_window()
         self.driver.get("http://www.google.com/")                    # navigate to the google home page
@@ -17,7 +16,7 @@ class SearchText(unittest.TestCase):
         self.assertTrue(self.is_element_present(By.NAME,'btnI'))    #Name of the I'm Feeling Lucky box
         self.assertTrue(self.is_element_present(By.CLASS_NAME, 'hb2Smf'))    #Check's the class name for "search by mic"
         self.assertTrue(self.is_element_present(By.CLASS_NAME,'gNO89b'))        #Check's Google Search-box class name
-        self.assertTrue(self.is_element_present(By.CLASS_NAME, 'gb_Mf'))            # Check's for the google apps square dots near google account
+        self.assertTrue(self.is_element_present(By.CLASS_NAME, 'gb_Of'))            # Check's for the google apps square dots near google account
         self.search_field = self.driver.find_element_by_name('q')    # get the search textbox
         self.search_field.send_keys('Selenium WebDriver')            # enter search keyword and submit
         self.search_field.submit()
