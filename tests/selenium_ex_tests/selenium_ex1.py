@@ -4,28 +4,29 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import TimeoutException
 
 
 class SearchText(unittest.TestCase):
     # search box from Google home page
-    search_field = "q"
+    search_field = (By.XPATH, '//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input')
     # Name of the I'm Feeling Lucky box
-    feeling_lucky = 'btnI'
+    feeling_lucky = (By.NAME, 'btnI')
     # the class name for "search by mic"
-    mic_search = 'hb2Smf'
+    mic_search = (By.CLASS_NAME, 'hb2Smf')
     # "Google Search" button class name
-    search_box_button = 'gNO89b'
+    search_box_button = (By.CLASS_NAME, 'gNO89b')
     # Google apps square dots near google account
-    square_dots = 'gb_C'
+    square_dots = (By.CLASS_NAME, 'gb_C')
     # the footer logo from selenium WebDiver site
-    footer_logo = 'footerLogo'
+    footer_logo = (By.ID, 'footerLogo')
     # Class name of Selenium Webdriver's first result on google.
-    get_page = 'LC20lb'
+    get_page = (By.CLASS_NAME, 'LC20lb')
     # Download box menu from header
-    download_menu = 'menu_download'
+    download_menu = (By.ID, 'menu_download')
     # DownloadBox ---Download link for selenium---
     # in the right side menu up to donate section
-    download_box = 'downloadBox'
+    download_box = (By.CLASS_NAME, 'downloadBox')
     time = 5
 
     def setUp(self):
@@ -37,23 +38,54 @@ class SearchText(unittest.TestCase):
     def test_search_automation(self):
         # navigate to the google home page
         self.driver.get("http://www.google.com/")
-        self.wait.until(ec.visibility_of_element_located((By.NAME, self.search_field)))
-        self.wait.until(ec.presence_of_element_located((By.NAME, self.feeling_lucky)))
-        self.wait.until(ec.visibility_of_element_located((By.CLASS_NAME, self.mic_search)))
-        self.wait.until(ec.presence_of_element_located((By.CLASS_NAME, self.search_box_button)))
-        self.wait.until(ec.presence_of_element_located((By.CLASS_NAME, self.square_dots)))
+        assert self.is_element_present(self.search_field)
+        assert self.presence_of_element(self.feeling_lucky)
+        assert self.is_element_present(self.mic_search)
+        assert self.presence_of_element(self.search_box_button)
+        assert self.presence_of_element(self.square_dots)
         # get the search textbox, search for keywords and submit
-        search_for = self.wait.until(ec.element_to_be_clickable((By.NAME, self.search_field)))
-        search_for.send_keys('Selenium WebDriver')
-        search_for.submit()
-        # First result on google search (the class name of Selenium webdriver)
-        self.wait.until(ec.element_to_be_clickable((By.CLASS_NAME, self.get_page))).click()
-        self.wait.until(ec.presence_of_element_located((By.ID, self.footer_logo)))
-        self.wait.until(ec.presence_of_element_located((By.ID, self.download_menu)))
-        self.wait.until(ec.presence_of_element_located((By.CLASS_NAME, self.download_box)))
+        assert self.google_search(self.search_field)
+        # First result on  google search (the class name of Selenium webdriver)
+        assert self.click_element(self.get_page)
+        assert self.presence_of_element(self.footer_logo)
+        assert self.presence_of_element(self.download_menu)
+        assert self.presence_of_element(self.download_box)
 
     def tearDown(self):
         self.driver.quit()  # close the browser window
+
+    def google_search(self, element):
+        elem = self.get_element(element)
+        elem.send_keys('Selenium WebDriver')
+        elem.submit()
+        return elem
+
+    def is_element_present(self, selector_value):
+        try:
+            element = self.wait.until(ec.visibility_of_element_located(selector_value))
+            return element.is_displayed()
+        except TimeoutException:
+            return False
+
+    def click_element(self, element):
+        elem = self.wait.until(ec.element_to_be_clickable(element))
+        elem.click()
+        return elem
+
+    def check_element_is_present(self, element):
+        elem = self.get_element(element)
+        return elem.is_displayed()
+
+    def get_element(self, selector_value):
+        element = self.wait.until(ec.visibility_of_element_located(selector_value))
+        return element
+
+    def click_elem(self, selector_value):
+        selector_value.click()
+
+    def presence_of_element(self, selector_value):
+        element = self.wait.until(ec.presence_of_element_located(selector_value))
+        return element
 
 
 if __name__ == '__main__':
