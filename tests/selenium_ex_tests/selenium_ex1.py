@@ -9,7 +9,7 @@ from selenium.common.exceptions import TimeoutException
 
 class SearchText(unittest.TestCase):
     # search box from Google home page
-    search_field = (By.XPATH, '//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input')
+    search_field = (By.NAME, 'q')
     # Name of the I'm Feeling Lucky box
     feeling_lucky = (By.NAME, 'btnI')
     # the class name for "search by mic"
