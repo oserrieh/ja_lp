@@ -20,8 +20,8 @@ class SearchText(unittest.TestCase):
     square_dots = (By.CLASS_NAME, 'gb_C')
     # the footer logo from selenium WebDiver site
     footer_logo = (By.ID, 'footerLogo')
-    # Class name of Selenium Webdriver's first result on google.
-    get_page = (By.CLASS_NAME, 'LC20lb')
+    # Class name of Selenium WebDriver's first result on google.
+    search_result_page = (By.CLASS_NAME, 'LC20lb')
     # Download box menu from header
     download_menu = (By.ID, 'menu_download')
     # DownloadBox ---Download link for selenium---
@@ -44,9 +44,9 @@ class SearchText(unittest.TestCase):
         assert self.presence_of_element(self.search_box_button)
         assert self.presence_of_element(self.square_dots)
         # get the search textbox, search for keywords and submit
-        assert self.google_search(self.search_field)
+        self.google_search(self.search_field)
         # First result on  google search (the class name of Selenium webdriver)
-        assert self.click_element(self.get_page)
+        self.click_element(self.search_result_page)
         assert self.presence_of_element(self.footer_logo)
         assert self.presence_of_element(self.download_menu)
         assert self.presence_of_element(self.download_box)
@@ -58,7 +58,6 @@ class SearchText(unittest.TestCase):
         elem = self.get_element(element)
         elem.send_keys('Selenium WebDriver')
         elem.submit()
-        return elem
 
     def is_element_present(self, selector_value):
         try:
@@ -70,7 +69,6 @@ class SearchText(unittest.TestCase):
     def click_element(self, element):
         elem = self.wait.until(ec.element_to_be_clickable(element))
         elem.click()
-        return elem
 
     def check_element_is_present(self, element):
         elem = self.get_element(element)
@@ -81,7 +79,8 @@ class SearchText(unittest.TestCase):
         return element
 
     def click_elem(self, selector_value):
-        selector_value.click()
+        element = self.get_element(selector_value)
+        element.click()
 
     def presence_of_element(self, selector_value):
         element = self.wait.until(ec.presence_of_element_located(selector_value))
