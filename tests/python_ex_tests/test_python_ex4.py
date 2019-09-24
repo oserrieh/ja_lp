@@ -1,4 +1,4 @@
-from exercises.python_exercises.python_ex4 import positive_sum
+from ja_lp.exercises.python_exercises.python_ex4 import positive_sum
 
 
 def test_positive_sum_examples():
