@@ -3,7 +3,6 @@ from selenium import webdriver
 
 from ja_lp.exercises.selenium_exercises.elements import GooglePageElements
 
-
 class SearchText(unittest.TestCase, GooglePageElements):
 
     def setUp(self):
@@ -21,12 +20,14 @@ class SearchText(unittest.TestCase, GooglePageElements):
         assert page.check_searchbox_present()
         assert page.check_square_dots()
         # get the search textbox, search for keywords and submit
-        page.search_string()
+
+        search_result = page.search_string()
         # First result on  google search (the class name of Selenium webdriver)
-        page.click_link()
-        assert page.check_footer_logo()
-        assert page.check_download_menu()
-        assert page.check_download_box()
+        selenium_page = search_result.click_link()
+        assert selenium_page.check_footer_logo()
+        assert selenium_page.check_download_menu()
+        assert selenium_page.check_download_box()
+
 
     def tearDown(self):
         self.driver.quit()  # close the browser window
