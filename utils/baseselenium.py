@@ -1,15 +1,14 @@
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
-from ja_lp.utils.base_testcase import BaseTestCase
 
-class SeleniumActions(BaseTestCase):
+class SeleniumActions(object):
 
-    test_case = BaseTestCase(self.driver)
-    driver = test_case.driver
-    timeout_time = 5
+    def __init__(self, driver):
+        self.driver = driver
+        timeout_time = 5
+        self.wait = WebDriverWait(driver, timeout_time)
 
-    wait = WebDriverWait(test_case.driver, timeout_time)
 
     def get_element(self, selector):
         element = self.wait.until(ec.visibility_of_element_located(selector))
@@ -26,7 +25,9 @@ class SeleniumActions(BaseTestCase):
         elem = self.wait.until(ec.element_to_be_clickable(element))
         elem.click()
 
-
+    def presence_of_element(self, selector_value):
+        element = self.wait.until(ec.presence_of_element_located(selector_value))
+        return element
 
 
 

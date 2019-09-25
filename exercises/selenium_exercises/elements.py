@@ -12,7 +12,7 @@ class GooglePageElements(SeleniumActions):
     # "Google Search" button class name
     search_box_button = (By.CLASS_NAME, 'gNO89b')
     # Google apps square dots near google account
-    square_dots = (By.CLASS_NAME, 'gb_C')
+    square_dots = (By.CLASS_NAME, 'gb_B')
     # the footer logo from selenium WebDiver site
     footer_logo = (By.ID, 'footerLogo')
     # Class name of Selenium WebDriver's first result on google.
@@ -29,18 +29,32 @@ class GooglePageElements(SeleniumActions):
         elem.send_keys('Selenium WebDriver')
         elem.submit()
 
+    def click_link(self):
+        return self.click_element(self.search_result_page)
+
+    def search_string(self):
+        return self.google_search(self.search_field)
 
     def check_search_element_present(self):
         return self.is_element_present(self.search_field)
 
     def check_lucky_present(self):
-        return self.is_element_present(self.feeling_lucky)
+        return self.presence_of_element(self.feeling_lucky)
 
     def check_mic_search(self):
         return self.is_element_present(self.mic_search)
 
     def check_searchbox_present(self):
-        return self.is_element_present(self.search_box_button)
+        return self.presence_of_element(self.search_box_button)
 
     def check_square_dots(self):
-        return self.is_element_present(self.square_dots)
+        return self.presence_of_element(self.square_dots)
+
+    def check_footer_logo(self):
+        return self.presence_of_element(self.footer_logo)
+
+    def check_download_box(self):
+        return self.presence_of_element(self.download_box)
+
+    def check_download_menu(self):
+        return self.presence_of_element(self.download_menu)
