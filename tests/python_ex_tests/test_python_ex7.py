@@ -1,4 +1,4 @@
-from exercises.python_exercises.python_ex7 import reverse_list
+from ja_lp.exercises.python_exercises.python_ex7 import reverse_list
 
 
 def test_reverse_list():
